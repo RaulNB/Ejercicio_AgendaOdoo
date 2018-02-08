@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<odoo>
+  <data>
+  	<!-- Action to open To-do Task list --> 
+    <act_window 
+      id="hobbie_act_window" 
+      name="Hobbies" 
+      res_model="clase.hobbie" 
+      view_mode="tree,form"
+    /> 
+
+    <!-- Menu item to open To-do Task list --> 
+    <menuitem
+    	id="hobbie_menuitem"
+    	name="Hobbies"
+    	parent="agenda_inicio_menuitem"
+    	sequence="30"
+    	action="hobbie_act_window"
+	/>
+  </data>
+</odoo>

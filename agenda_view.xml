@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<odoo>
+  <data>
+      <!-- Declaracion de la vista formulario -->
+
+
+    <record id="view_form_todo_task" model="ir.ui.view"> 
+      <field name="name">Agenda Form</field> 
+      <field name="model">agenda.app</field> 
+      <field name="type">form</field>
+      <field name="arch" type="xml"> 
+
+        <form> 
+          <sheet> 
+            <group name="group_top"> 
+              <group name="group_left"> 
+                <field name="name"/> 
+                <field name="apellidos"/> 
+                <field name="numero_telefono"/>
+              </group> 
+              <group name="group_right">
+                <field name="fecha_nacimiento"/> 
+                <field name="edad"/>  
+              	<field name="direccion"/>
+                <field name="provincia"/>  
+              </group> 
+            </group> 
+
+            <group name="group_bottom">
+            	<notebook>
+            		<page string = "Datos adicionales">
+            			<field name="correo"/>
+            			<field name="pagina_web"/>
+            		</page>
+            	</notebook>
+           	</group>
+          </sheet> 
+
+        </form>
+      </field> 
+    </record> 
+
+    <!-- Declaracion de la vista árbol -->
+
+    <record id="view_tree_todo_task" model="ir.ui.view"> 
+      <field name="name">Agenda Tree</field>
+      <field name="model">agenda.app</field>
+      <field name="arch" type="xml"> 
+        <tree>
+            <field name="name"/>
+            <field name="apellidos"/>
+            <field name="numero_telefono"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Declaracion de la vista de búsqueda -->
+
+    <record id="view_filter_todo_task" model="ir.ui.view">
+      <field name="name">Agenda Filter</field>
+      <field name="model">agenda.app</field>
+      <field name="arch" type="xml"> 
+        <search>
+          <field name="name"/>
+          <field name="apellidos"/>
+          <field name="numero_telefono"/>
+        </search>
+      </field>
+    </record>
+
+
+
+
+    <!-- Action to open To-do Task list --> 
+    <act_window 
+      id="agenda_act_window" 
+      name="Agenda" 
+      res_model="agenda.app" 
+      view_mode="tree,form"
+    /> 
+
+    <!-- Menu item to open To-do Task list --> 
+    <menuitem 
+      id="agenda_menuitem" 
+      name="Agenda"  
+    /> 
+    <menuitem
+    	id="agenda_inicio_menuitem"
+    	name="Inicio"
+    	parent="agenda_menuitem"
+    	sequence="10"
+    />
+    <menuitem
+    	id="agenda_contactos_menuitem"
+    	name="Contactos"
+    	parent="agenda_inicio_menuitem"
+    	sequence="20"
+    	action="agenda_act_window"
+	/>
+  </data>
+</odoo>
