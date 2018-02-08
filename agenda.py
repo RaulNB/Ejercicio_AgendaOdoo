@@ -4,6 +4,12 @@ class agendamodel(models.Model):
     _name = 'agenda.app'
     _description = 'Gestina una agenda'
     
+    _sql_constraints = [(
+    	'agenda_numero_unico',
+    	'UNIQUE(numero_telefono)',
+    	'Ese número de teléfono ya existe'
+    )]
+
     name = fields.Char('Nombre', required=True)
     apellidos = fields.Char('Apellidos', required=True)
     numero_telefono = fields.Char('Telefono', required=True)
@@ -20,5 +26,12 @@ class agendamodel(models.Model):
 
 class hobbie(models.Model):
 	_name = 'clase.hobbie'
+	
+	_sql_constraints = [(
+    	'hobbie_nombre_unico',
+    	'UNIQUE(name)',
+    	'Ese hobbie ya existe'
+    )]
+
 	name = fields.Char('Nombre', required=True)
 	descripcion = fields.Char('Descripción')
