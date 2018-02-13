@@ -3,14 +3,17 @@
   <data>
       <!-- Declaracion de la vista formulario -->
 
-
-    <record id="view_form_todo_task" model="ir.ui.view"> 
+    <record id="agenda_form" model="ir.ui.view"> 
       <field name="name">Agenda Form</field> 
       <field name="model">agenda.app</field> 
       <field name="type">form</field>
       <field name="arch" type="xml"> 
 
         <form> 
+          <header>
+              <button name ="do_toggle_done" type = "object" string = "Toggle Done" class = "oe_highlight"/>
+              <button name ="do_clear_done" type = "object" string = "Clear All Done"/>          
+          </header>
           <sheet> 
             <group name="group_top"> 
               <group name="group_left"> 
@@ -26,12 +29,27 @@
               </group> 
             </group> 
 
-            <group name="group_bottom">
+            <group name="group_bottom" colspan = "4">
             	<notebook>
             		<page string = "Datos adicionales">
-            			<field name="correo"/>
-            			<field name="pagina_web"/>
+                        <group name = "datos_adicionales">
+                			<field name="correo"/>
+                			<field name="pagina_web"/>
+                        </group>
             		</page>
+                    <page string = "Notas">
+                        <field name = "nota"/>
+                    </page>
+                    <page string = "Hobbies">
+                        <group name = "hobbies">
+                			<field name="hobbie_ids"/>
+                        </group>
+                    </page>
+                    <page string = "Vehiculos">
+                        <group name = "vehiculos">
+                			<field name="vehiculos_ids"/>
+                        </group>
+                    </page>
             	</notebook>
            	</group>
           </sheet> 
@@ -42,7 +60,7 @@
 
     <!-- Declaracion de la vista árbol -->
 
-    <record id="view_tree_todo_task" model="ir.ui.view"> 
+    <record id="agenda_tree" model="ir.ui.view"> 
       <field name="name">Agenda Tree</field>
       <field name="model">agenda.app</field>
       <field name="arch" type="xml"> 
@@ -56,20 +74,16 @@
 
     <!-- Declaracion de la vista de búsqueda -->
 
-    <record id="view_filter_todo_task" model="ir.ui.view">
+    <record id="agenda_filter" model="ir.ui.view">
       <field name="name">Agenda Filter</field>
       <field name="model">agenda.app</field>
       <field name="arch" type="xml"> 
         <search>
           <field name="name"/>
-          <field name="apellidos"/>
           <field name="numero_telefono"/>
         </search>
       </field>
     </record>
-
-
-
 
     <!-- Action to open To-do Task list --> 
     <act_window 
@@ -80,10 +94,10 @@
     /> 
 
     <!-- Menu item to open To-do Task list --> 
-    <menuitem 
+    <menuitem
       id="agenda_menuitem" 
-      name="Agenda"  
-    /> 
+      name="Agenda"
+    />
     <menuitem
     	id="agenda_inicio_menuitem"
     	name="Inicio"

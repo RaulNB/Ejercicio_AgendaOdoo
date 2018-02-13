@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<odoo>
+  <data>
+      <!-- Declaracion de la vista formulario -->
+
+    <record id="hobbie_form" model="ir.ui.view"> 
+      <field name="name">Hobbie Form</field> 
+      <field name="model">hobbie.class</field> 
+      <field name="type">form</field>
+      <field name="arch" type="xml"> 
+
+        <form> 
+          <header>
+              <button name ="do_toggle_done" type = "object" string = "Toggle Done" class = "oe_highlight"/>
+              <button name ="do_clear_done" type = "object" string = "Clear All Done"/>          
+          </header>
+          <sheet> 
+            <group name="group_top"> 
+                <field name="name"/> 
+                <field name="descripcion"/> 
+            </group>
+          </sheet> 
+
+        </form>
+      </field> 
+    </record> 
+
+    <!-- Declaracion de la vista árbol -->
+
+    <record id="hobbie_tree" model="ir.ui.view"> 
+      <field name="name">Hobbie Tree</field>
+      <field name="model">hobbie.class</field>
+      <field name="arch" type="xml"> 
+        <tree>
+            <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Declaracion de la vista de búsqueda -->
+
+    <record id="hobbie_filter" model="ir.ui.view">
+      <field name="name">Hobbie Filter</field>
+      <field name="model">hobbie.class</field>
+      <field name="arch" type="xml"> 
+        <search>
+          <field name="name"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- Action to open To-do Task list --> 
+    <act_window 
+      id="hobbie_act_window" 
+      name="Hobbie" 
+      res_model="hobbie.class" 
+      view_mode="tree,form"
+    /> 
+
+    <!-- Menu item to open To-do Task list --> 
+    <menuitem
+    	id="agenda_hobbies_menuitem"
+    	name="Hobbies"
+    	parent="agenda_inicio_menuitem"
+    	sequence="30"
+    	action="hobbie_act_window"
+	/>
+  </data>
+</odoo>

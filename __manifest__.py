@@ -9,5 +9,5 @@
     'version': '1',
     'category': 'Others',
     'license' : 'GPL-3',
-    'update_xml': ['agenda_view.xml', 'agenda_hobbie.xml'],
+    'update_xml': ['agenda_view.xml', 'hobbie_view.xml', 'vehiculos_view.xml'],
 }

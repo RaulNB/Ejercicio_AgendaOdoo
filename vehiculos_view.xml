@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<odoo>
+  <data>
+      <!-- Declaracion de la vista formulario -->
+
+    <record id="vehiculos_form" model="ir.ui.view"> 
+      <field name="name">Vehiculos Form</field> 
+      <field name="model">vehiculos.class</field> 
+      <field name="type">form</field>
+      <field name="arch" type="xml"> 
+
+        <form> 
+          <header>
+              <button name ="do_toggle_done" type = "object" string = "Toggle Done" class = "oe_highlight"/>
+              <button name ="do_clear_done" type = "object" string = "Clear All Done"/>          
+          </header>
+          <sheet> 
+            <group name="group_top"> 
+                <field name="name"/> 
+                <field name="propietario"/> 
+            </group>
+          </sheet> 
+
+        </form>
+      </field> 
+    </record> 
+
+    <!-- Declaracion de la vista árbol -->
+
+    <record id="vehiculos_tree" model="ir.ui.view"> 
+      <field name="name">Vehiculos Tree</field>
+      <field name="model">vehiculos.class</field>
+      <field name="arch" type="xml"> 
+        <tree>
+            <field name="name"/>
+            <field name="propietario"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Declaracion de la vista de búsqueda -->
+
+    <record id="vehiculos_filter" model="ir.ui.view">
+      <field name="name">Vehiculos Filter</field>
+      <field name="model">vehiculos.class</field>
+      <field name="arch" type="xml"> 
+        <search>
+          <field name="name"/>
+          <field name="propietario"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- Action to open To-do Task list --> 
+    <act_window 
+      id="vehiculos_act_window" 
+      name="Vehiculos" 
+      res_model="vehiculos.class" 
+      view_mode="tree,form"
+    /> 
+
+    <!-- Menu item to open To-do Task list --> 
+    <menuitem
+    	id="agenda_vehiculos_menuitem"
+    	name="Vehiculos"
+    	parent="agenda_inicio_menuitem"
+    	sequence="40"
+    	action="vehiculos_act_window"
+	/>
+  </data>
+</odoo>
